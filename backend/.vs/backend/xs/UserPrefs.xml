@@ -1,4 +1,22 @@
 ﻿<Properties StartupConfiguration="{C6409B5B-56DD-4C28-A779-6A5877154507}|https">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="backend" expanded="True" selected="True">
+            <Node name="backend" expanded="True">
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.backend FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.backend PreferredExecutionTarget="/Applications/TeX/TeX Live Utility.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
