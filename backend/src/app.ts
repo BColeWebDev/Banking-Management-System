@@ -17,21 +17,19 @@ const limit = rateLimit({
 const app = express();
 
 // Middleware
-app.set('trust proxy', true);
 app.use(limit);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
-
+import authRoutes from "./routes/auth.route"
 // Routes
 
+app.use("/api/auth", authRoutes)
 
 // Server heartbeat check
 app.get('/api/auth/whoami',async(req:Request,res:Response) =>{
     res.json({message:"auth controller"})
 })
-app.get('/api/workouts/whoami',async(req:Request,res:Response) =>{
-    res.json({message:"workouts controller"})
-})
+
 
 export {app}
