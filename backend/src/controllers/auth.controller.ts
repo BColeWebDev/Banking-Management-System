@@ -9,13 +9,21 @@ const RegisterUser = async (req:Request, res:Response) =>{
         last_name, 
         email, 
         password,
+        confirm_password
     } = req.body
     const userExist = await User.findOne({email})
     if(userExist){
         error.push( "email already exists!" )
-        res.status(409).json({ errors: error.map(err => err)});
+        res.status(400).json({ errors: error.map(err => err)});
         error = []
-    }else{
+    }
+    if(password !== confirm_password){
+        error.push( "Password does not match,please try again!" )
+        res.status(400).json({ errors: error.map(err => err)});
+        error = []
+    }
+    
+    else{
         const hashedPassword = await hashPassword.hash({rounds:10,password})
 
                       // Create User 

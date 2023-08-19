@@ -1,1 +1,24 @@
-<p>register works!</p>
+<h1>Register</h1>
+<form [formGroup]="formData">
+    <div>
+        <h3>First Name</h3>
+        <input formControlName="first_name" name="first_name" type="text" required/>
+    </div>
+    <div>
+        <h3>Last Name</h3>
+        <input formControlName="last_name" name="last_name" type="text" required/>
+    </div>
+    <div>
+        <h3>Email</h3>
+        <input formControlName="email" name="email" type="email" required/>
+    </div>
+    <div>
+        <h3>Password</h3>
+        <input formControlName="password" name="password" type="password" required/>
+    </div>
+    <div>
+        <h3>Confirm Password</h3>
+        <input formControlName="confirm_password" name="password" type="password" required/>
+    </div>
+    <button (click)="handleRegister()">Submit</button>
+</form>

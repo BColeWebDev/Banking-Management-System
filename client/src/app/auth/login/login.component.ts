@@ -12,7 +12,8 @@ export class LoginComponent {
 
   constructor(private router: Router,  private authService: AuthService) {}
 
-  login(): void {
+  handleLogin(): void {
+    console.log(this.email!, this.password!)
     this.authService.Login(this.email!, this.password!).subscribe(()=>{
       this.router.navigateByUrl('/');
     })
