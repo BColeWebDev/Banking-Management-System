@@ -20,7 +20,7 @@ const app = express();
 app.use(limit);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors());
 import authRoutes from "./routes/auth.route"
 // Routes
 

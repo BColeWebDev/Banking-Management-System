@@ -10,7 +10,8 @@ const RegisterUser = async (req:Request, res:Response) =>{
         email, 
         password,
         confirm_password
-    } = req.body
+    } = req.body.user
+ 
     const userExist = await User.findOne({email})
     if(userExist){
         error.push( "email already exists!" )

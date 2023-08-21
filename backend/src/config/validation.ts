@@ -5,6 +5,7 @@ interface Register{
     last_name:string
     email:string
     password: string
+    confirm_password:string
 }
 interface Login{
     email:string
@@ -65,7 +66,15 @@ const registerSchema = Joi.object({
             'any.required': `password is required field`
         }),
 
-  
+  confirm_password:  Joi.string()
+  .pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
+  .required()
+  .messages({
+      'string.empty': `confirm password  cannot be an empty field`,
+      'string.min': `confirm password  should have a minimum length of 8 characters`,
+      'string.pattern.base': `Invalid Password must contain: captialize letter, lower case letter, & special character`,
+      'any.required': `confirm password is required field`
+  }),
     
 })
 
@@ -100,7 +109,8 @@ class Validation {
      // Validation for registering Register
      registerValidation = (data : Register) => {
         // checks if text is not blank   
-        const response = registerSchema.validate({...data}, { abortEarly: false })
+    
+        const response = registerSchema.validate(data, { abortEarly: false })
         return response
     }
     // Login Valiation
