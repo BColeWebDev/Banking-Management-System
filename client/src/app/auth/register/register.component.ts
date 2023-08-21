@@ -8,13 +8,17 @@ import {
   ValidationErrors,
   AbstractControl,
 } from '@angular/forms';
+import { User } from 'src/shared/interfaces/User';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent {
-  constructor(private router: Router,  private authService: AuthService) {}
+  errors: string[] =[]
+  constructor(private router: Router,  private authService: AuthService) {
+    this.errors = this.errors
+  }
 
     formData = new UntypedFormGroup({
       first_name:  new UntypedFormControl('', [Validators.required]),
@@ -27,13 +31,21 @@ export class RegisterComponent {
       ),
 
     })
-  
+    ngOnInit() {
+    console.log("called")
+    }
   handleRegister():void{
+
    this.authService
       .Register( this.formData.getRawValue())
-      .subscribe(() => {
-        
-      });
-      this.router.navigate(['/login']);
+      .subscribe({
+        next: (value) => {
+          this.router.navigate(['/login']) 
+        },
+        error:(err) => {
+         this.errors = err.error.errors
+        },
+      });      
   }
+
 }

@@ -1,11 +1,12 @@
 <form>
-    <div>
-        <h3>Email</h3>
-        <input [(ngModel)]="email" name="email" type="email" required/>
-    </div>
-    <div>
-        <h3>Password</h3>
-        <input [(ngModel)]="password" type="password" name="password" required />
-    </div> 
-    <button (click)="handleLogin()">Submit</button>
+  <div>
+    <h3>Email</h3>
+    <input [(ngModel)]="email" name="email" type="email" required />
+  </div>
+  <div>
+    <h3>Password</h3>
+    <input [(ngModel)]="password" type="password" name="password" required />
+  </div>
+  <div>{{ errorMsg }}</div>
+  <button (click)="handleLogin()">Submit</button>
 </form>

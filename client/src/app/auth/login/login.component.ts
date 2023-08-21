@@ -9,13 +9,26 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email: string | null = null;
   password: string | null = null;
+  errorMsg: string = "";
 
   constructor(private router: Router,  private authService: AuthService) {}
 
   handleLogin(): void {
+    if(this.errorMsg !== ""){
+      this.errorMsg = "";
+    }
     console.log(this.email!, this.password!)
-    this.authService.Login(this.email!, this.password!).subscribe(()=>{
-      this.router.navigateByUrl('/');
+    this.authService.Login(this.email!, this.password!)
+    .subscribe({
+      next:(value)=>{
+        this.authService.setUser(value.existingUser)
+      },  
+      error:(err)=>{
+        this.errorMsg = err.error;
+
+      },
+
+
     })
   }
 }
