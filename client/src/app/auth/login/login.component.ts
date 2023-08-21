@@ -17,7 +17,7 @@ export class LoginComponent {
     if(this.errorMsg !== ""){
       this.errorMsg = "";
     }
-    console.log(this.email!, this.password!)
+   
     this.authService.Login(this.email!, this.password!)
     .subscribe({
       next:(value)=>{

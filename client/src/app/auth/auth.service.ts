@@ -43,4 +43,7 @@ export class AuthService{
         this.tokenStorage.signOut();
         this.setUser(null);
     }
+    getUser(){
+        return this.tokenStorage.getToken()
+    }
 }

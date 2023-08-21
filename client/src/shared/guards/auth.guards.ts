@@ -6,19 +6,18 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot
 } from '@angular/router';
-// @Injectable({ providedIn: 'root' })
-// export class AuthGuard implements CanActivate {
-//   constructor(private router: Router, private authService: AuthService) {}
-
-//   canActivate(): Observable<boolean> {
-//     return this.authService.getUser().pipe(
-//       map(user => {
-//         if (user !== null) {
-//           return true;
-//         }
-
-//         this.router.navigateByUrl('/auth/login');
-//         return false;
-//       })
-//     );
-//   }
+import { AuthService } from 'src/app/auth/auth.service';
+@Injectable({ providedIn: 'root' })
+export class AuthGuard implements CanActivate{
+  constructor(private authService:AuthService, private router:Router){}
+  canActivate(){
+    console.log("called",this.authService.getUser() !== "")
+    if(this.authService.getUser() !==  null){
+      return true;
+    }else{
+      this.router.navigateByUrl('/auth/login');
+      return false
+    }
+   
+  }
+}
