@@ -22,6 +22,8 @@ export class LoginComponent {
     .subscribe({
       next:(value)=>{
         this.authService.setUser(value.existingUser)
+        this.router.navigateByUrl("/home")
+        
       },  
       error:(err)=>{
         this.errorMsg = err.error;

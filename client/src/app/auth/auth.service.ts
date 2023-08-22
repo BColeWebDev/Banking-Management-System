@@ -23,6 +23,7 @@ export class AuthService{
             tap(({userToken,existingUser})=>{
                 this.setUser(existingUser)
                 this.tokenStorage.saveToken(userToken);
+                this.tokenStorage.saveCurrentUser(existingUser);
             },
             (error)=>{
                 console.log("error",error)
@@ -43,7 +44,10 @@ export class AuthService{
         this.tokenStorage.signOut();
         this.setUser(null);
     }
-    getUser(){
+    getUserToken(){
         return this.tokenStorage.getToken()
+    }
+    getUser() : string | null{
+        return this.tokenStorage.getCurrentUser();
     }
 }

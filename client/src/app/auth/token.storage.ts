@@ -10,7 +10,17 @@ export class TokenStorage {
         if (!token) return;
         localStorage.setItem("userToken", token);
     }
+    saveCurrentUser(user?:any){
+      if (!user) return;
+      localStorage.setItem("currentUser", JSON.stringify(user));
+  }
+
+    
     getToken(): string | null {
         return localStorage.getItem("userToken");
+      }
+      getCurrentUser() {
+        let data:any= localStorage.getItem("currentUser")
+        return JSON.parse(data);
       }
 }
