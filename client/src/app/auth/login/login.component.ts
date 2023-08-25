@@ -4,12 +4,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.sass'],
 })
 export class LoginComponent {
   email: string | null = null;
   password: string | null = null;
   errorMsg: string = "";
+  hide = true;
+
 
   constructor(private router: Router,  private authService: AuthService) {}
 

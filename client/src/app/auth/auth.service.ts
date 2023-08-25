@@ -13,7 +13,7 @@ export class AuthService{
     private user$ = new BehaviorSubject<User | null>(null);
     constructor(private http: HttpClient,private tokenStorage: TokenStorage){
     
-    
+        console.log("called",this.user$)
    
 
     }

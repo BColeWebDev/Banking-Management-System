@@ -1,12 +1,32 @@
 <form>
   <div>
-    <h3>Email</h3>
-    <input [(ngModel)]="email" name="email" type="email" required />
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="email" name="email" type="email" required />
+    </mat-form-field>
   </div>
   <div>
-    <h3>Password</h3>
-    <input [(ngModel)]="password" type="password" name="password" required />
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        [(ngModel)]="password"
+        name="password"
+        type="password"
+        required
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
   </div>
   <div>{{ errorMsg }}</div>
-  <button (click)="handleLogin()">Submit</button>
+  <button mat-raised-button (click)="handleLogin()">Submit</button>
 </form>

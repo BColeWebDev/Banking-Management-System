@@ -1,4 +1,6 @@
+import { User } from 'src/shared/interfaces/User';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'client';
+  constructor(){
+    console.log("called")
+  }
 }
