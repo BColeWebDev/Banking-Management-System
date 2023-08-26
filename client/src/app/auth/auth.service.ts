@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/shared/interfaces/User';
-import { Observable, catchError, tap, BehaviorSubject } from 'rxjs';
+import { Observable, catchError, tap, BehaviorSubject, pluck } from 'rxjs';
 import { TokenStorage } from './token.storage';
 interface AuthResponse{
     userToken:string
@@ -29,7 +29,6 @@ export class AuthService{
                 console.log("error",error)
             })
         )
-        
     };
     Register(user:User):Observable<User>{
         return this.http.post<User>(`http://localhost:8000/api/auth/register`,{user})
@@ -47,7 +46,7 @@ export class AuthService{
     getUserToken(){
         return this.tokenStorage.getToken()
     }
-    getUser() : string | null{
-        return this.tokenStorage.getCurrentUser();
+    getUser() : Observable<User | null>{
+        return this.user$.asObservable()
     }
 }

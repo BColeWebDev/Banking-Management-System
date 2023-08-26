@@ -1,5 +1,6 @@
+import { User } from './../../shared/interfaces/User';
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component,  Input } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -8,15 +9,17 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent {
-  user:any = ""
+ 
+  @Input() user: User | null = null;
+
+  
   constructor(private authService:AuthService, private router:Router){
 
   }
-  ngOnInit(){
-   this.user =  this.authService.getUser();
-  }
+
   handleSignOut():void{
     this.authService.signOut();
     this.router.navigateByUrl("/auth/login")
+    this.authService.getUserToken();
   }
 }
