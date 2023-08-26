@@ -22,10 +22,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 import authRoutes from "./routes/auth.route"
+import accountsRoutes from './routes/accounts.route'
 // Routes
 
 app.use("/api/auth", authRoutes)
-
+app.use("/api/accounts", accountsRoutes)
 // Server heartbeat check
 app.get('/api/auth/whoami',async(req:Request,res:Response) =>{
     res.json({message:"auth controller"})
