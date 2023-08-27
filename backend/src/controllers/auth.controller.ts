@@ -66,9 +66,14 @@ const LoginUser = async(req:Request, res:Response) =>{
     
        
         const userToken  = generateToken(existingUser!.email, existingUser!.first_name, existingUser!.last_name)
-      
+      let obj ={
+        id:existingUser.id,
+        email:existingUser.email,
+        first_name:existingUser.first_name,
+        last_name:existingUser.last_name
+      }
   
-        res.status(200).json({existingUser, userToken});
+        res.status(200).json({existingUser:obj, userToken});
     } catch (error) {
         console.log(error)
         res.status(400).json({error:error})

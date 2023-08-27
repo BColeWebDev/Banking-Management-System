@@ -1,0 +1,23 @@
+<p>dashboard works!</p>
+
+<button (click)="toCreateAccPage()">Create New Account</button>
+<button (click)="">Withdrawal Funds</button>
+<button (click)="">Deposit Funds</button>
+<!-- Account Section -->
+<div *ngFor="let account of allAccounts$">
+    <p>{{account._id}}</p>
+    <p>{{account.accountName}}</p>
+    <p>{{account.accountType}}</p>
+    <p>{{account.userid}}</p>
+    <p>${{account.balance}}</p>
+    <p>{{account.accountId}}</p>
+    <div *ngIf=" account.transactions.length <= 0 else transactions" > 
+        No transactions
+    </div>
+    <ng-template #transactions>
+        <h1>Transactions</h1>
+        <ul *ngFor="let transaction of account.transactions">
+            <li>{{transaction.transactionName}}</li>
+        </ul>
+    </ng-template>
+</div>

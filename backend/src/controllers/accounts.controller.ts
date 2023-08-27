@@ -3,11 +3,12 @@ import { Account } from "../models/accounts.model";
 import { uniqueId } from "lodash";
 let error: string[] = [];
 const CreateNewAccount =  async (req:Request,res:Response) =>{
-// const {
-//      accountName, 
-//         balance, 
-//         email, 
-// } = req.body.user
+const {
+     accountName, 
+        balance, 
+        email, 
+} = req.body
+
 const createAccount = await Account.create({
     accountId:1,
     accountName:"testing",
@@ -23,7 +24,8 @@ createAccount.save().then((val)=>{
 }
 
 const GetAllAccounts =  async (req:Request,res:Response) =>{   
-    const allAccounts = await Account.find({})
+
+    const allAccounts = await Account.find({userid:req.params.id})
     return res.status(200).json(allAccounts)
 }
 

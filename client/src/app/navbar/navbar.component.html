@@ -1,6 +1,7 @@
 <header>
     <mat-toolbar>
         <span>Bank Management System</span>
+        <span class="example-spacer"></span>
         <div *ngIf="user">
             {{user.first_name}}
             <button  (click)="handleSignOut()">Sign out</button>

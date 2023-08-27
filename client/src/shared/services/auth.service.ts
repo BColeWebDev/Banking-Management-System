@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/shared/interfaces/User';
 import { Observable, catchError, tap, BehaviorSubject, pluck } from 'rxjs';
-import { TokenStorage } from './token.storage';
+import { TokenStorage } from '../../app/auth/token.storage';
 interface AuthResponse{
     userToken:string
     existingUser:User
@@ -12,10 +12,7 @@ export class AuthService{
  
     private user$ = new BehaviorSubject<User | null>(null);
     constructor(private http: HttpClient,private tokenStorage: TokenStorage){
-    
-        console.log("called",this.user$)
-   
-
+      this.setUser(tokenStorage.getCurrentUser())
     }
     Login(email:string,password:string) {
         return this.http.post<AuthResponse>(`http://localhost:8000/api/auth/login`,{email,password}).pipe(

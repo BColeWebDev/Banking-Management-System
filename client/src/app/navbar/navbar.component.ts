@@ -1,7 +1,7 @@
 import { User } from './../../shared/interfaces/User';
 import { Router } from '@angular/router';
 import { Component,  Input } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
